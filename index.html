@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instituto Particular Mixto "El Divino Maestro"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #b89c3b;
+      --secondary: #e3c770;
+      --dark: #333;
+      --light: #f9f9f9;
+      --accent: #8a6d2b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .tagline {
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 0;
+    }
+    
+    /* Vision & Mission */
+    .vision-mission {
+      background-color: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+    
+    .vision-mission h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    /* Pricing */
+    .pricing {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      transform: scale(0.95);
+      opacity: 0;
+      animation: fadeInScale 1s 0.3s forwards;
+    }
+    
+    .pricing h3 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .price-item {
+      margin-bottom: 15px;
+    }
+    
+    /* Careers */
+    .careers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .career-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+      animation-delay: calc(var(--delay) * 0.1s);
+    }
+    
+    .career-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .career-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 20px;
+    }
+    
+    .career-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+    
+    .career-details {
+      padding: 20px;
+    }
+    
+    .career-details p {
+      margin-bottom: 15px;
+    }
+    
+    .career-details ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    /* Contact */
+    .contact-section {
+      background-color: white;
+      padding: 60px 0;
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .contact-info {
+      background-color: var(--light);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .contact-info h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      background-color: var(--accent);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+      }
+      
+      .nav-links li {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+      
+      .careers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Hero Image -->
+  <header>
+    <div class="container">
+      <div class="logo">El Divino Maestro</div>
+      <div class="tagline">"Id y enseñad a todos"</div>
+      <h1>Formando jóvenes competentes con herramientas tecnológicas, metodologías innovadoras y sólidos valores</h1>
+    </div>
+  </header>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">El Divino Maestro</a>
+      <ul class="nav-links">
+        <li><a href="#vision-mision">Visión y Misión</a></li>
+        <li><a href="#nivel-primario">Nivel Primario</a></li>
+        <li><a href="#nivel-basico">Nivel Básico</a></li>
+        <li><a href="#carreras">Carreras</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Vision & Mission Section -->
+    <section id="vision-mision">
+      <h2 class="section-title">Nuestra Visión y Misión</h2>
+      
+      <div class="vision-mission" style="--delay: 0">
+        <h3>Visión</h3>
+        <p>Ser una institución educativa líder en el campo de la formación integral de los jóvenes, aplicando metodologías innovadoras, a fin de formar personas competentes para desempeñarse eficientemente y responder a las necesidades de la comunidad y su desarrollo.</p>
+      </div>
+      
+      <div class="vision-mission" style="--delay: 1">
+        <h3>Misión</h3>
+        <p>"Somos una institución educativa, con amplia trayectoria en el campo de la formación de jóvenes, cuya preparación comprende el desarrollo de habilidades científico-humanista, aplicación de metodologías innovadoras, la práctica de sólidos valores morales y éticos y el fortalecimiento del espíritu de servicio lo que les permite formarse con excelencia convirtiéndose en actores activos de su desarrollo."</p>
+      </div>
+      
+      <div class="pricing" style="--delay: 2">
+        <h3>Cuotas para el Ciclo Escolar 2026</h3>
+        <div class="price-item">Inscripción: Q300.00</div>
+        <div class="price-item">Cuota Mensual: Q230.00</div>
+        <button onclick="openGoogleForm()" class="btn" style="display:inline-block;margin-top:25px;padding:12px 28px;background-color:var(--accent);color:white;text-decoration:none;border-radius:6px;font-weight:600;font-size:1.1rem;transition:background 0.3s;border:none;cursor:pointer;">Reserva tu inscripción</button>
+      </div>
+      
+      <!-- Google Forms Modal -->
+      <div id="googleFormModal" class="modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);">
+        <div class="modal-content" style="background-color:white;margin:2% auto;padding:20px;border-radius:10px;width:95%;max-width:800px;height:90%;position:relative;">
+          <span class="close" onclick="closeGoogleForm()" style="position:absolute;right:15px;top:10px;font-size:28px;font-weight:bold;cursor:pointer;color:#aaa;z-index:1001;">&times;</span>
+          <h3 style="color:var(--primary);margin-bottom:20px;text-align:center;">Reserva tu Inscripción</h3>
+          <div style="height:calc(100% - 80px);overflow:hidden;">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfQTm5DKWACXm5iFsjcVPbQH0RShbiinDL8E7F795RNbRY_aA/viewform?embedded=true" 
+                    style="width:100%;height:100%;border:none;" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+              Cargando formulario...
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Nivel Primario Section -->
+    <section id="nivel-primario">
+      <h2 class="section-title">Nivel Primario</h2>
+      
+      <div class="careers-grid">
+        <!-- Primero Primaria -->
+        <div class="career-card" style="--delay: 0">
+          <div class="career-header">
+            <h3>Primero Primaria</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Iniciar la formación académica integral de los estudiantes, desarrollando las competencias básicas de lectura, escritura y matemáticas fundamentales.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Inicio de educación bilingüe intercultural</li>
+              <li>Desarrollo de habilidades básicas de comunicación</li>
+              <li>Introducción a las tecnologías educativas</li>
+              <li>Fortalecimiento de valores y principios</li>
+              <li>Actividades lúdicas y participativas</li>
+              <li>Preparación para segundo primaria</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Segundo Primaria -->
+        <div class="career-card" style="--delay: 1">
+          <div class="career-header">
+            <h3>Segundo Primaria</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Consolidar las competencias básicas adquiridas en primero primaria y desarrollar habilidades de pensamiento crítico y creativo.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Continuidad del programa bilingüe</li>
+              <li>Desarrollo de habilidades de lectura comprensiva</li>
+              <li>Fortalecimiento de operaciones matemáticas</li>
+              <li>Exploración de ciencias naturales</li>
+              <li>Actividades de expresión artística</li>
+              <li>Preparación para tercero primaria</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Tercero Primaria -->
+        <div class="career-card" style="--delay: 2">
+          <div class="career-header">
+            <h3>Tercero Primaria</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Profundizar en los conocimientos académicos y desarrollar habilidades de investigación y análisis básico.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Programa académico avanzado</li>
+              <li>Desarrollo de habilidades de investigación</li>
+              <li>Fortalecimiento de competencias matemáticas</li>
+              <li>Exploración de ciencias sociales</li>
+              <li>Actividades de desarrollo tecnológico</li>
+              <li>Preparación para cuarto primaria</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Cuarto Primaria -->
+        <div class="career-card" style="--delay: 3">
+          <div class="career-header">
+            <h3>Cuarto Primaria</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Desarrollar competencias superiores en todas las áreas académicas y fomentar el pensamiento analítico y reflexivo.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Formación académica integral</li>
+              <li>Desarrollo de pensamiento crítico</li>
+              <li>Fortalecimiento de competencias tecnológicas</li>
+              <li>Exploración de proyectos interdisciplinarios</li>
+              <li>Actividades de liderazgo estudiantil</li>
+              <li>Preparación para quinto primaria</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Quinto Primaria -->
+        <div class="career-card" style="--delay: 4">
+          <div class="career-header">
+            <h3>Quinto Primaria</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Consolidar las competencias académicas y desarrollar habilidades de liderazgo y trabajo en equipo.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Programa académico especializado</li>
+              <li>Desarrollo de habilidades de liderazgo</li>
+              <li>Fortalecimiento de competencias tecnológicas</li>
+              <li>Proyectos de investigación avanzados</li>
+              <li>Actividades de servicio comunitario</li>
+              <li>Preparación para sexto primaria</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Sexto Primaria -->
+        <div class="career-card" style="--delay: 5">
+          <div class="career-header">
+            <h3>Sexto Primaria</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Culminar la formación primaria con excelencia académica y preparar a los estudiantes para la transición exitosa al nivel básico.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Formación académica de excelencia</li>
+              <li>Desarrollo de competencias superiores</li>
+              <li>Preparación integral para básico</li>
+              <li>Orientación vocacional inicial</li>
+              <li>Proyectos de culminación</li>
+              <li>Transición al nivel básico</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nivel Básico Section -->
+    <section id="nivel-basico">
+      <h2 class="section-title">Nivel Básico</h2>
+      
+      <div class="careers-grid">
+        <!-- Primero Básico -->
+        <div class="career-card" style="--delay: 0">
+          <div class="career-header">
+            <h3>Primero Básico</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Consolidar los conocimientos adquiridos en primaria y desarrollar competencias avanzadas en todas las áreas académicas, preparando a los estudiantes para el segundo básico.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Continuidad del programa bilingüe</li>
+              <li>Metodologías activas y participativas</li>
+              <li>Desarrollo de pensamiento crítico</li>
+              <li>Fortalecimiento de valores</li>
+              <li>Orientación vocacional inicial</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+              <li>Computación</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Segundo Básico -->
+        <div class="career-card" style="--delay: 1">
+          <div class="career-header">
+            <h3>Segundo Básico</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Profundizar en los conocimientos académicos y desarrollar habilidades de investigación, análisis y síntesis, preparando a los estudiantes para el tercer básico.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Programa académico avanzado</li>
+              <li>Desarrollo de habilidades tecnológicas</li>
+              <li>Proyectos de investigación</li>
+              <li>Orientación vocacional</li>
+              <li>Preparación para diversificado</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+              <li>Computación Avanzada</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Tercero Básico -->
+        <div class="career-card" style="--delay: 2">
+          <div class="career-header">
+            <h3>Tercero Básico</h3>
+            <p>Plan Diario | 1 año</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Culminar la formación básica con excelencia académica, desarrollando competencias superiores y preparando a los estudiantes para la elección de su carrera en el nivel diversificado.</p>
+            <p><strong>Características principales:</strong></p>
+            <ul>
+              <li>Formación académica integral</li>
+              <li>Desarrollo de competencias superiores</li>
+              <li>Orientación vocacional especializada</li>
+              <li>Preparación para diversificado</li>
+              <li>Proyectos interdisciplinarios</li>
+            </ul>
+            <p><strong>Áreas de estudio:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales</li>
+              <li>Ciencias Sociales</li>
+              <li>Educación Física</li>
+              <li>Expresión Artística</li>
+              <li>Productividad y Desarrollo</li>
+              <li>Tecnologías de la Información</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="carreras">
+      <h2 class="section-title">Nuestras Carreras</h2>
+      
+      <div class="careers-grid">
+        <!-- Career 1 -->
+        <div class="career-card" style="--delay: 0">
+          <div class="career-header">
+            <h3>Magisterio de Educación Infantil Intercultural</h3>
+            <p>Plan Diario | 3 años</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Brindar la formación académica y humana para ser Maestra en la etapa educativa de 0 a 6 años y poder contribuir al desarrollo y crecimiento de los niños, despertando su interés por el mundo que les rodea desde la observación, la exploración y el juego.</p>
+            <p><strong>Áreas de estudio incluyen:</strong></p>
+            <ul>
+              <li>Filosofía Maya y General</li>
+              <li>Educación Bilingüe Intercultural</li>
+              <li>Psicopedagogía Infantil</li>
+              <li>Didáctica General</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Career 2 -->
+        <div class="career-card" style="--delay: 1">
+          <div class="career-header">
+            <h3>Secretariado y Oficinista</h3>
+            <p>Plan Diario y Fin de Semana | 2 años</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Formar mujeres emprendedoras y eficientes, capaces con cargo de responsabilidad, que dominen técnicas administrativas para brindar una mejor atención al público.</p>
+            <p><strong>Áreas de estudio incluyen:</strong></p>
+            <ul>
+              <li>Redacción y Correspondencia</li>
+              <li>Taquigrafía y Mecanografía</li>
+              <li>Contabilidad</li>
+              <li>Computación</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Career 3 -->
+        <div class="career-card" style="--delay: 2">
+          <div class="career-header">
+            <h3>Bachillerato en Ciencias y Letras con Orientación en Computación</h3>
+            <p>Plan Diario | 2 años</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Adquirir conocimientos en el uso de tecnología y resolución de problemas relacionados con las ciencias, letras y vida cotidiana, aprendiendo a programar en los lenguajes más utilizados.</p>
+            <p><strong>Áreas de estudio incluyen:</strong></p>
+            <ul>
+              <li>Programación</li>
+              <li>Matemática y Física</li>
+              <li>Contabilidad General</li>
+              <li>Inglés Técnico</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Career 4 -->
+        <div class="career-card" style="--delay: 3">
+          <div class="career-header">
+            <h3>Perito Contador con Orientación en Computación</h3>
+            <p>Plan Diario y Fin de Semana | 3 años</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Poseer conocimientos en el manejo eficiente de la contabilidad, leyes fiscales y aduanales vigentes en forma interactiva, uso de tecnología, y resolución de problemas relacionados con operaciones contables.</p>
+            <p><strong>Áreas de estudio incluyen:</strong></p>
+            <ul>
+              <li>Contabilidad de Sociedades y Costos</li>
+              <li>Legislación Fiscal y Aduanal</li>
+              <li>Computación y Programación</li>
+              <li>Auditoría</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Career 5 -->
+        <div class="career-card" style="--delay: 4">
+          <div class="career-header">
+            <h3>Perito en Administración</h3>
+            <p>Plan Diario | 3 años</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Obtener herramientas para desenvolverse en cualquier empresa o como emprendedor, aplicando conocimientos en temas jurídicos, financieros, mercadológicos y de gestión de personal.</p>
+            <p><strong>Áreas de estudio incluyen:</strong></p>
+            <ul>
+              <li>Administración Pública</li>
+              <li>Contabilidad Fiscal</li>
+              <li>Planificación y Desarrollo</li>
+              <li>Relaciones Públicas</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Career 6 -->
+        <div class="career-card" style="--delay: 5">
+          <div class="career-header">
+            <h3>Bachillerato por Madurez</h3>
+            <p>Plan Fin de Semana | 1 año (requiere 18 años cumplidos)</p>
+          </div>
+          <div class="career-details">
+            <p><strong>Objetivo:</strong> Desarrollar pensamiento lógico, reflexivo y crítico; aplicar métodos de razonamiento matemático; y utilizar tecnología y saberes culturales en proyectos de desarrollo.</p>
+            <p><strong>Áreas de estudio incluyen:</strong></p>
+            <ul>
+              <li>Comunicación y Lenguaje</li>
+              <li>Matemáticas</li>
+              <li>Ciencias Naturales y Sociales</li>
+              <li>Tecnologías de la Información</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Catalog Section -->
+    <section id="catalogo">
+      <h2 class="section-title">Catálogo Completo de Carreras</h2>
+      <div class="vision-mission" style="--delay: 0">
+        <p>Todas nuestras carreras incluyen diplomado en Computación y en Recursos Humanos.</p>
+        <p>Descarga nuestro catálogo completo para conocer todos los detalles de cada carrera, incluyendo planes de estudio por grado, objetivos específicos y más información relevante.</p>
+        <a href="https://drive.google.com/file/d/13v84IxpFhHbM0Vd3PtLK8xttCLzqzw9c/view?usp=drive_link" class="btn" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: var(--primary); color: white; text-decoration: none; border-radius: 5px; transition: all 0.3s ease;">Descargar Catálogo PDF</a>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+      <h2 class="section-title">Contáctanos</h2>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Información de Contacto</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <strong>Teléfono:</strong> 7948-4009
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <strong>Correos:</strong><br>
+              divinomaestro2008@hotmail.es<br>
+              eldivinomaestro89@gmail.com
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div>
+              <strong>Sitio Web:</strong> www.eldivinomaestro.com
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://wa.me/+50232023812" class="social-link" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100054365855100&mibextid=ZbWKwL" class="social-link" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com/colegio_eldivinomaestro_?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" class="social-link" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@colegio.el.divino?_t=8gGLGQUCLKP&_r=1" class="social-link" target="_blank">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-info">
+          <h3>Ubicación</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <strong>Dirección:</strong> Total Tomas Estilla, Guatemala
+            </div>
+          </div>
+          
+          <div style="margin-top: 30px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.678901234567!2d-90.123456!3d14.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDA3JzI0LjQiTiA5MMKwMDcnMjQuNCJX!5e0!3m2!1sen!2sgt!4v1234567890123!5m2!1sen!2sgt" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Instituto Particular Mixto "El Divino Maestro". Todos los derechos reservados.</p>
+      <p>"Id y enseñad a todos"</p>
+    </div>
+  </footer>
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <script>
+    // Initialize EmailJS
+    (function() {
+      emailjs.init("YOUR_USER_ID"); // Replace with your actual EmailJS user ID
+    })();
+
+    // Simple script to handle scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.vision-mission, .pricing, .career-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+
+    // Modal functions
+    function openGoogleForm() {
+      document.getElementById('googleFormModal').style.display = 'block';
+    }
+
+    function closeGoogleForm() {
+      document.getElementById('googleFormModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('googleFormModal');
+      if (event.target == modal) {
+        closeGoogleForm();
+      }
+    }
+
+    // Google Forms integration
+    function openGoogleForm() {
+      document.getElementById('googleFormModal').style.display = 'block';
+    }
+
+    function closeGoogleForm() {
+      document.getElementById('googleFormModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
