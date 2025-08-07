@@ -4,6 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instituto Particular Mixto "El Divino Maestro"</title>
+  
+  <!-- Favicon and Logo -->
+  <link rel="icon" type="image/jpeg" href="Logo.jpeg">
+  <link rel="apple-touch-icon" href="Logo.jpeg">
+  <link rel="shortcut icon" href="Logo.jpeg">
+  
+  <!-- Meta Tags for SEO and Social Sharing -->
+  <meta name="description" content="Instituto Particular Mixto El Divino Maestro - Formando jóvenes competentes con herramientas tecnológicas, metodologías innovadoras y sólidos valores en Santo Tomas de Castilla, Puerto Barrios, Izabal, Guatemala.">
+  <meta name="keywords" content="colegio, instituto, educación, Santo Tomas de Castilla, Puerto Barrios, Izabal, Guatemala, primaria, básico, carreras, magisterio, secretariado, bachillerato, perito">
+  <meta name="author" content="Instituto Particular Mixto El Divino Maestro">
+  
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="Instituto Particular Mixto El Divino Maestro">
+  <meta property="og:description" content="Formando jóvenes competentes con herramientas tecnológicas, metodologías innovadoras y sólidos valores.">
+  <meta property="og:image" content="Logo.jpeg">
+  <meta property="og:url" content="https://eldivinomaestro.com">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Instituto Particular Mixto El Divino Maestro">
+  <meta name="twitter:description" content="Formando jóvenes competentes con herramientas tecnológicas, metodologías innovadoras y sólidos valores.">
+  <meta name="twitter:image" content="Logo.jpeg">
+  
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#b89c3b">
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -49,6 +76,16 @@
       font-weight: 600;
       color: var(--primary);
       margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .logo img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
     }
     
     .tagline {
@@ -77,6 +114,15 @@
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
     
     .nav-links {
@@ -113,6 +159,37 @@
     
     .nav-links a:hover::after {
       width: 100%;
+    }
+    
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+      background: none;
+      border: none;
+    }
+    
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
     }
     
     /* Sections */
@@ -304,6 +381,27 @@
       margin-top: 60px;
     }
     
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    
+    .footer-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
     /* Animations */
     @keyframes fadeInUp {
       from {
@@ -329,21 +427,272 @@
     
     /* Responsive */
     @media (max-width: 768px) {
-      .nav-container {
+      /* Header */
+      .logo {
+        font-size: 2rem !important;
         flex-direction: column;
+        gap: 10px;
+      }
+      
+      .logo img {
+        width: 60px !important;
+        height: 60px !important;
+      }
+      
+      /* Navigation */
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+      }
+      
+      .nav-logo {
+        font-size: 1.3rem !important;
+        flex-direction: row;
+        gap: 10px;
+      }
+      
+      .nav-logo img {
+        width: 30px !important;
+        height: 30px !important;
+      }
+      
+      .hamburger {
+        display: flex !important;
       }
       
       .nav-links {
-        margin-top: 15px;
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 20px;
+        transition: left 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      
+      .nav-links.active {
+        left: 0;
       }
       
       .nav-links li {
-        margin-left: 15px;
-        margin-right: 15px;
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
       }
       
+      .nav-links a {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        display: block;
+        border-bottom: 1px solid #eee;
+      }
+      
+      /* Sections */
+      section {
+        padding: 40px 0 !important;
+      }
+      
+      .section-title {
+        font-size: 1.8rem !important;
+        text-align: center;
+      }
+      
+      /* Careers Grid */
       .careers-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      
+      .career-card {
+        margin-bottom: 20px;
+      }
+      
+      /* Contact Section */
+      .contact-container {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+      }
+      
+      .contact-info {
+        padding: 20px !important;
+      }
+      
+      .social-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px !important;
+      }
+      
+      .social-link {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.3rem !important;
+      }
+      
+      /* Catalog */
+      .catalog-unified {
+        padding: 20px !important;
+      }
+      
+      .catalog-unified .btn {
+        width: 100% !important;
+        max-width: none !important;
+        font-size: 1rem !important;
+      }
+      
+      /* Footer */
+      .footer-logo {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .footer-logo img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+      
+      .footer-logo span {
+        font-size: 1.5rem !important;
+      }
+      
+      /* Pricing Section */
+      .pricing {
+        padding: 30px 20px !important;
+      }
+      
+      .pricing .btn {
+        width: 100% !important;
+        max-width: none !important;
+        font-size: 1rem !important;
+      }
+      
+      /* Reservar Inscripción en Cuotas */
+      .pricing .catalog-container {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+      }
+      
+      .pricing .catalog-preview,
+      .pricing .catalog-info {
+        padding: 15px !important;
+      }
+      
+      .pricing .catalog-unified {
+        padding: 15px !important;
+      }
+      
+      .pricing .catalog-unified .btn {
+        width: 100% !important;
+        font-size: 0.9rem !important;
+        padding: 10px 15px !important;
+      }
+      
+      /* Modal Responsive */
+      .modal-content {
+        width: 95% !important;
+        margin: 10% auto !important;
+        padding: 20px !important;
+        max-height: 80vh !important;
+      }
+      
+      /* WhatsApp Form Modal */
+      #whatsappFormModal .modal-content {
+        padding: 20px !important;
+        max-width: 95% !important;
+      }
+      
+      #whatsappFormModal input,
+      #whatsappFormModal select,
+      #whatsappFormModal textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+      }
+    }
+    
+    /* Extra Small Devices */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px !important;
+      }
+      
+      .logo {
+        font-size: 1.8rem !important;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        top: 60px;
+        height: calc(100vh - 60px);
+      }
+      
+      .nav-links li {
+        margin: 0;
+      }
+      
+      .nav-links a {
+        font-size: 1rem !important;
+        padding: 12px 15px !important;
+      }
+      
+      .section-title {
+        font-size: 1.5rem !important;
+      }
+      
+      .career-header h3 {
+        font-size: 1.2rem !important;
+      }
+      
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      
+      .contact-icon {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 1rem !important;
+      }
+      
+      .social-link {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.2rem !important;
+      }
+      
+      /* Reservar Inscripción en Cuotas - Extra Small */
+      .pricing .catalog-unified {
+        padding: 10px !important;
+      }
+      
+      .pricing .catalog-unified h4 {
+        font-size: 1.1rem !important;
+      }
+      
+      .pricing .catalog-unified .btn {
+        font-size: 0.8rem !important;
+        padding: 8px 12px !important;
+      }
+      
+      /* Contact Section - Extra Small */
+      .contact-info h3 {
+        font-size: 1.3rem !important;
+      }
+      
+      .contact-item {
+        margin-bottom: 10px !important;
+      }
+      
+      .contact-item div:last-child {
+        font-size: 0.9rem !important;
       }
     }
   </style>
@@ -352,7 +701,10 @@
   <!-- Header with Hero Image -->
   <header>
     <div class="container">
-      <div class="logo">El Divino Maestro</div>
+      <div class="logo">
+        <img src="Logo.jpeg" alt="Logo El Divino Maestro">
+        <span>El Divino Maestro</span>
+      </div>
       <div class="tagline">"Id y enseñad a todos"</div>
       <h1>Formando jóvenes competentes con herramientas tecnológicas, metodologías innovadoras y sólidos valores</h1>
     </div>
@@ -361,14 +713,24 @@
   <!-- Navigation -->
   <nav>
     <div class="container nav-container">
-      <a href="#" class="nav-logo">El Divino Maestro</a>
-      <ul class="nav-links">
-        <li><a href="#vision-mision">Visión y Misión</a></li>
-        <li><a href="#nivel-primario">Nivel Primario</a></li>
-        <li><a href="#nivel-basico">Nivel Básico</a></li>
-        <li><a href="#carreras">Carreras</a></li>
-        <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+      <a href="#" class="nav-logo">
+        <img src="Logo.jpeg" alt="Logo El Divino Maestro">
+        <span>El Divino Maestro</span>
+      </a>
+      
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#vision-mision" onclick="closeMenu()">Visión y Misión</a></li>
+        <li><a href="#nivel-primario" onclick="closeMenu()">Nivel Primario</a></li>
+        <li><a href="#nivel-basico" onclick="closeMenu()">Nivel Básico</a></li>
+        <li><a href="#carreras" onclick="closeMenu()">Carreras</a></li>
+        <li><a href="#catalogo" onclick="closeMenu()">Catálogo</a></li>
+        <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
       </ul>
     </div>
   </nav>
@@ -393,7 +755,39 @@
         <h3>Cuotas para el Ciclo Escolar 2026</h3>
         <div class="price-item">Inscripción: Q300.00</div>
         <div class="price-item">Cuota Mensual: Q230.00</div>
-        <button onclick="openGoogleForm()" class="btn" style="display:inline-block;margin-top:25px;padding:12px 28px;background-color:var(--accent);color:white;text-decoration:none;border-radius:6px;font-weight:600;font-size:1.1rem;transition:background 0.3s;border:none;cursor:pointer;">Reserva tu inscripción</button>
+        
+        <!-- Reservar Inscripción Section -->
+        <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.1); border-radius: 8px; border: 2px solid rgba(255,255,255,0.2);">
+          <h4 style="color: black; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">
+            <i class="fas fa-graduation-cap" style="margin-right: 10px;"></i>
+            Reservar Inscripción
+          </h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            
+            <!-- Formulario Google -->
+            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 6px;">
+              <i class="fas fa-file-alt" style="font-size: 2rem; color: black; margin-bottom: 10px;"></i>
+              <h5 style="color: black; margin-bottom: 10px; font-size: 1rem;">Formulario Online</h5>
+              <p style="color: rgba(0,0,0,0.8); font-size: 0.9rem; margin-bottom: 15px;">Reserva rápida y segura</p>
+              <button onclick="openGoogleForm()" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; background-color: white; color: var(--primary); text-decoration: none; border-radius: 5px; font-weight: 600; border: none; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+                <i class="fas fa-edit"></i>
+                Llenar Formulario
+              </button>
+            </div>
+            
+            <!-- WhatsApp -->
+            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 6px;">
+              <i class="fab fa-whatsapp" style="font-size: 2rem; color: black; margin-bottom: 10px;"></i>
+              <h5 style="color: black; margin-bottom: 10px; font-size: 1rem;">WhatsApp</h5>
+              <p style="color: rgba(0,0,0,0.8); font-size: 0.9rem; margin-bottom: 15px;">Atención personalizada</p>
+              <button onclick="openWhatsAppForm()" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; background-color: #25D366; color: white; text-decoration: none; border-radius: 5px; font-weight: 600; border: none; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+                <i class="fab fa-whatsapp"></i>
+                Enviar por WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       
       <!-- Google Forms Modal -->
@@ -410,6 +804,82 @@
               Cargando formulario...
             </iframe>
           </div>
+        </div>
+      </div>
+      
+      <!-- WhatsApp Form Modal -->
+      <div id="whatsappFormModal" class="modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);">
+        <div class="modal-content" style="background-color:white;margin:5% auto;padding:30px;border-radius:10px;width:90%;max-width:500px;position:relative;">
+          <span class="close" onclick="closeWhatsAppForm()" style="position:absolute;right:20px;top:15px;font-size:28px;font-weight:bold;cursor:pointer;color:#aaa;">&times;</span>
+          <h3 style="color:var(--primary);margin-bottom:20px;text-align:center;">Reserva por WhatsApp</h3>
+          <form id="whatsappForm" onsubmit="submitWhatsAppForm(event)">
+            <div style="margin-bottom:15px;">
+              <label for="nombreEncargado" style="display:block;margin-bottom:5px;font-weight:600;">Nombre completo del padre, madre y/o encargado *</label>
+              <input type="text" id="nombreEncargado" name="nombreEncargado" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+            </div>
+            <div style="margin-bottom:15px;">
+              <label for="telefono" style="display:block;margin-bottom:5px;font-weight:600;">Número de teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+            </div>
+            <div style="margin-bottom:15px;">
+              <label for="dpi" style="display:block;margin-bottom:5px;font-weight:600;">DPI *</label>
+              <input type="text" id="dpi" name="dpi" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+            </div>
+            <div style="margin-bottom:15px;">
+              <label for="nombreEstudiante" style="display:block;margin-bottom:5px;font-weight:600;">Nombre del estudiante *</label>
+              <input type="text" id="nombreEstudiante" name="nombreEstudiante" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+            </div>
+            <div style="margin-bottom:15px;">
+              <label for="fechaNacimiento" style="display:block;margin-bottom:5px;font-weight:600;">Fecha nacimiento del estudiante *</label>
+              <input type="date" id="fechaNacimiento" name="fechaNacimiento" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+            </div>
+            <div style="margin-bottom:15px;">
+              <label for="fecha" style="display:block;margin-bottom:5px;font-weight:600;">Fecha *</label>
+              <input type="date" id="fecha" name="fecha" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+            </div>
+            <div style="margin-bottom:15px;">
+              <label for="jornada" style="display:block;margin-bottom:5px;font-weight:600;">Jornada *</label>
+              <select id="jornada" name="jornada" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+                <option value="">Selecciona una jornada</option>
+                <option value="Matutina">Matutina</option>
+                <option value="Vespertina">Vespertina</option>
+                <option value="Fin de Semana">Fin de Semana</option>
+              </select>
+            </div>
+            <div style="margin-bottom:20px;">
+              <label for="gradoCarrera" style="display:block;margin-bottom:5px;font-weight:600;">Grado o carrera *</label>
+              <select id="gradoCarrera" name="gradoCarrera" required style="width:100%;padding:10px;border:1px solid #ddd;border-radius:5px;font-size:16px;">
+                <option value="">Selecciona un grado o carrera</option>
+                <optgroup label="Nivel Primario">
+                  <option value="Primero Primaria">Primero Primaria</option>
+                  <option value="Segundo Primaria">Segundo Primaria</option>
+                  <option value="Tercero Primaria">Tercero Primaria</option>
+                  <option value="Cuarto Primaria">Cuarto Primaria</option>
+                  <option value="Quinto Primaria">Quinto Primaria</option>
+                  <option value="Sexto Primaria">Sexto Primaria</option>
+                </optgroup>
+                <optgroup label="Nivel Básico">
+                  <option value="Primero Básico">Primero Básico</option>
+                  <option value="Segundo Básico">Segundo Básico</option>
+                  <option value="Tercero Básico">Tercero Básico</option>
+                </optgroup>
+                <optgroup label="Carreras">
+                  <option value="Magisterio de Educación Infantil Intercultural">Magisterio de Educación Infantil Intercultural</option>
+                  <option value="Secretariado y Oficinista">Secretariado y Oficinista</option>
+                  <option value="Bachillerato en Ciencias y Letras con Orientación en Computación">Bachillerato en Ciencias y Letras con Orientación en Computación</option>
+                  <option value="Perito Contador con Orientación en Computación">Perito Contador con Orientación en Computación</option>
+                  <option value="Perito en Administración">Perito en Administración</option>
+                  <option value="Bachillerato por Madurez">Bachillerato por Madurez</option>
+                </optgroup>
+              </select>
+            </div>
+            <div style="text-align:center;">
+              <button type="submit" style="background-color:#25D366;color:white;padding:12px 30px;border:none;border-radius:5px;font-size:16px;font-weight:600;cursor:pointer;transition:background 0.3s;">
+                <i class="fab fa-whatsapp" style="margin-right:8px;"></i>
+                Enviar por WhatsApp
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -816,10 +1286,51 @@
     <!-- Catalog Section -->
     <section id="catalogo">
       <h2 class="section-title">Catálogo Completo de Carreras</h2>
-      <div class="vision-mission" style="--delay: 0">
-        <p>Todas nuestras carreras incluyen diplomado en Computación y en Recursos Humanos.</p>
-        <p>Descarga nuestro catálogo completo para conocer todos los detalles de cada carrera, incluyendo planes de estudio por grado, objetivos específicos y más información relevante.</p>
-        <a href="https://drive.google.com/file/d/13v84IxpFhHbM0Vd3PtLK8xttCLzqzw9c/view?usp=drive_link" class="btn" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: var(--primary); color: white; text-decoration: none; border-radius: 5px; transition: all 0.3s ease;">Descargar Catálogo PDF</a>
+      <h3 style="text-align: center; color: var(--accent); margin-bottom: 30px; font-size: 1.3rem;">Información sobre el Catálogo</h3>
+      
+      <div class="catalog-unified" style="background: white; border-radius: 10px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-top: 40px;">
+        
+        <!-- Header del Catálogo -->
+        <div style="text-align: center; margin-bottom: 30px;">
+          <i class="fas fa-file-pdf" style="font-size: 4rem; color: var(--primary); margin-bottom: 15px;"></i>
+          <h4 style="color: var(--dark); margin-bottom: 10px; font-size: 1.5rem;">Catálogo Institucional 2026</h4>
+          <p style="color: #666; font-size: 1rem;">Documento PDF con información completa de todos nuestros niveles educativos y carreras disponibles.</p>
+        </div>
+        
+        <!-- Contenido del Catálogo -->
+        <div style="background: var(--light); border-radius: 8px; padding: 25px; margin-bottom: 30px;">
+          <h5 style="color: var(--accent); margin-bottom: 15px; font-size: 1.2rem;">Contenido del Catálogo:</h5>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+            <ul style="color: #666; font-size: 1rem; margin: 0;">
+              <li>✓ Nivel Primario (1° a 6°)</li>
+              <li>✓ Nivel Básico (1°, 2°, 3°)</li>
+              <li>✓ Carreras Diversificadas</li>
+            </ul>
+            <ul style="color: #666; font-size: 1rem; margin: 0;">
+              <li>✓ Planes de Estudio</li>
+              <li>✓ Información de Cuotas</li>
+              <li>✓ Proceso de Inscripción</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Información y Botón -->
+        <div style="text-align: center;">
+          <p style="margin-bottom: 20px; line-height: 1.6; color: #666;">puedes vizualizar el catálogo completo en el siguiente boton</p>
+          <p style="margin-bottom: 30px; line-height: 1.6; color: #666;">Descarga nuestro catálogo completo para conocer todos los detalles de cada carrera, incluyendo planes de estudio por grado, objetivos específicos y más información relevante.</p>
+          
+          <a href="https://drive.google.com/file/d/1jqjOvZxHJFFmKjhKxw0TfiLRpKm_naN1/view" target="_blank" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 30px; background-color: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;">
+            <i class="fas fa-eye"></i>
+            Ver Catálogo Online
+          </a>
+          
+          <div style="margin-top: 25px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid var(--primary); max-width: 600px; margin-left: auto; margin-right: auto;">
+            <p style="margin: 0; font-size: 0.9rem; color: #666;">
+              <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 8px;"></i>
+              <strong>Nota:</strong> El catálogo se abrirá en Google Drive. Para descargarlo, haz clic en el ícono de descarga en la esquina superior derecha.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
     
@@ -830,6 +1341,17 @@
       <div class="contact-container">
         <div class="contact-info">
           <h3>Información de Contacto</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <strong>Horarios de Atención:</strong><br>
+              7:00 AM - 3:00 PM de lunes a viernes<br>
+              7:00 AM - 12:00 PM domingos
+            </div>
+          </div>
           
           <div class="contact-item">
             <div class="contact-icon">
@@ -851,26 +1373,17 @@
             </div>
           </div>
           
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <div>
-              <strong>Sitio Web:</strong> www.eldivinomaestro.com
-            </div>
-          </div>
-          
           <div class="social-links">
-            <a href="https://wa.me/+50232023812" class="social-link" target="_blank">
+            <a href="https://wa.me/+50232023812" class="social-link" target="_blank" style="width: 50px; height: 50px; font-size: 1.5rem;">
               <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=100054365855100&mibextid=ZbWKwL" class="social-link" target="_blank">
+            <a href="https://www.facebook.com/profile.php?id=100054365855100&mibextid=ZbWKwL" class="social-link" target="_blank" style="width: 50px; height: 50px; font-size: 1.5rem;">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://instagram.com/colegio_eldivinomaestro_?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" class="social-link" target="_blank">
+            <a href="https://instagram.com/colegio_eldivinomaestro_?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" class="social-link" target="_blank" style="width: 50px; height: 50px; font-size: 1.5rem;">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.tiktok.com/@colegio.el.divino?_t=8gGLGQUCLKP&_r=1" class="social-link" target="_blank">
+            <a href="https://www.tiktok.com/@colegio.el.divino?_t=8gGLGQUCLKP&_r=1" class="social-link" target="_blank" style="width: 50px; height: 50px; font-size: 1.5rem;">
               <i class="fab fa-tiktok"></i>
             </a>
           </div>
@@ -883,12 +1396,60 @@
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <div>
-              <strong>Dirección:</strong> Total Tomas Estilla, Guatemala
+              <strong>Dirección:</strong> <a href="https://maps.app.goo.gl/NPY4ooL7WUtRqqPG7?g_st=ac" target="_blank" style="color: var(--primary); text-decoration: none;">Barrio el Pueblito, Santo Tomas de Castilla Puerto Barrios, Izabal, Guatemala</a>
             </div>
           </div>
           
           <div style="margin-top: 30px;">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.678901234567!2d-90.123456!3d14.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDA3JzI0LjQiTiA5MMKwMDcnMjQuNCJX!5e0!3m2!1sen!2sgt!4v1234567890123!5m2!1sen!2sgt" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+            <div style="margin-top: 15px; text-align: center;">
+              <a href="https://maps.app.goo.gl/NPY4ooL7WUtRqqPG7?g_st=ac" target="_blank" style="background-color: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: 600;">
+                <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
+                Ver en Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Reservar Inscripción Section -->
+      <div style="margin-top: 60px;">
+        <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px; font-size: 1.8rem;">Reservar Inscripción</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+          
+          <!-- Formulario Google -->
+          <div class="contact-info">
+            <h3 style="color: var(--primary); margin-bottom: 20px; text-align: center;">
+              <i class="fas fa-file-alt" style="margin-right: 10px;"></i>
+              Formulario Online
+            </h3>
+            <p style="margin-bottom: 20px; line-height: 1.6; color: #666;">
+              Completa nuestro formulario oficial de Google para reservar tu inscripción de manera rápida y segura.
+            </p>
+            <div style="text-align: center;">
+              <button onclick="openGoogleForm()" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 25px; background-color: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; font-size: 1rem;">
+                <i class="fas fa-edit"></i>
+                Llenar Formulario
+              </button>
+            </div>
+          </div>
+          
+          <!-- Formulario WhatsApp -->
+          <div class="contact-info">
+            <h3 style="color: var(--primary); margin-bottom: 20px; text-align: center;">
+              <i class="fab fa-whatsapp" style="margin-right: 10px;"></i>
+              WhatsApp
+            </h3>
+            <p style="margin-bottom: 20px; line-height: 1.6; color: #666;">
+              Envía tu información directamente por WhatsApp para una atención más personalizada.
+            </p>
+            <div style="text-align: center;">
+              <button onclick="openWhatsAppForm()" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 25px; background-color: #25D366; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; font-size: 1rem;">
+                <i class="fab fa-whatsapp"></i>
+                Enviar por WhatsApp
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -898,6 +1459,10 @@
   <!-- Footer -->
   <footer>
     <div class="container">
+      <div class="footer-logo">
+        <img src="Logo.jpeg" alt="Logo El Divino Maestro">
+        <span>El Divino Maestro</span>
+      </div>
       <p>&copy; 2024 Instituto Particular Mixto "El Divino Maestro". Todos los derechos reservados.</p>
       <p>"Id y enseñad a todos"</p>
     </div>
@@ -940,12 +1505,42 @@
 
     // Close modal when clicking outside
     window.onclick = function(event) {
-      const modal = document.getElementById('googleFormModal');
-      if (event.target == modal) {
+      const googleModal = document.getElementById('googleFormModal');
+      const whatsappModal = document.getElementById('whatsappFormModal');
+      const navLinks = document.getElementById('nav-links');
+      const hamburger = document.querySelector('.hamburger');
+      
+      if (event.target == googleModal) {
         closeGoogleForm();
+      }
+      
+      if (event.target == whatsappModal) {
+        closeWhatsAppForm();
+      }
+      
+      // Close mobile menu when clicking outside
+      if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+        closeMenu();
       }
     }
 
+    // Mobile Menu Functions
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const hamburger = document.querySelector('.hamburger');
+      
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+    
+    function closeMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const hamburger = document.querySelector('.hamburger');
+      
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+    
     // Google Forms integration
     function openGoogleForm() {
       document.getElementById('googleFormModal').style.display = 'block';
@@ -953,6 +1548,52 @@
 
     function closeGoogleForm() {
       document.getElementById('googleFormModal').style.display = 'none';
+    }
+    
+    // WhatsApp Form integration
+    function openWhatsAppForm() {
+      document.getElementById('whatsappFormModal').style.display = 'block';
+    }
+
+    function closeWhatsAppForm() {
+      document.getElementById('whatsappFormModal').style.display = 'none';
+    }
+    
+    function submitWhatsAppForm(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('whatsappForm');
+      const formData = new FormData(form);
+      
+      // Construir mensaje para WhatsApp
+      const mensaje = `*RESERVA DE INSCRIPCIÓN - EL DIVINO MAESTRO*
+
+*Información del Encargado:*
+👤 *Nombre:* ${formData.get('nombreEncargado')}
+📱 *Teléfono:* ${formData.get('telefono')}
+🆔 *DPI:* ${formData.get('dpi')}
+
+*Información del Estudiante:*
+👨‍🎓 *Nombre:* ${formData.get('nombreEstudiante')}
+📅 *Fecha de Nacimiento:* ${formData.get('fechaNacimiento')}
+
+*Información de Inscripción:*
+📅 *Fecha:* ${formData.get('fecha')}
+⏰ *Jornada:* ${formData.get('jornada')}
+🎓 *Grado/Carrera:* ${formData.get('gradoCarrera')}
+
+---
+*Enviado desde la página web oficial*`;
+      
+      // Codificar el mensaje para URL
+      const mensajeCodificado = encodeURIComponent(mensaje);
+      
+      // Abrir WhatsApp con el mensaje
+      window.open(`https://wa.me/+50232023812?text=${mensajeCodificado}`, '_blank');
+      
+      // Cerrar modal y resetear formulario
+      closeWhatsAppForm();
+      form.reset();
     }
   </script>
 </body>
